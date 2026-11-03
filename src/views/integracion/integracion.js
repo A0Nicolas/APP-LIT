@@ -60,7 +60,7 @@ class Integracion extends LitElement {
 
   render() {
     return html`
-      <h1>Integración de componentes - Grupo 3</h1>
+      <h1>Integración de componentes - Grupo 1</h1>
 
       <p class="aviso">
         Formulario externo de inventario (Grupo 2)
