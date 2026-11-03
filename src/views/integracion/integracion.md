@@ -91,3 +91,15 @@ Decisiones del adaptador:
 - **Síntoma:** en `localhost:5173/integracion.html` se veía «Gestión de clientes» y no el formulario de inventario.
 - **Causa:** la dirección tenía un punto al final (`integracion.html.`), y el servidor de Vite devolvió `index.html` por defecto.
 - **Solución:** escribir la dirección sin el punto final.
+
+## 7. Evaluación del componente externo
+
+| Aspecto | Nota (0-5) | Evidencia |
+|---|---|---|
+| API clara | 4 | `static get properties` declara 6 propiedades claras, pero falta documentación JSDoc y separar el estado interno como `error` (líneas 4-13). |
+| Evento bien construido | 5 | El comando `findstr` confirma el uso de `new CustomEvent` enviando los datos en el `detail` con `bubbles: true` y `composed: true` (líneas 86-89). |
+| Robustez | 4 | Al inyectar `undefined` y `null` vía consola usando `padre.shadowRoot.querySelector` el componente sobrevive sin errores rojos, pero silencia los arreglos con `String([])` (líneas 55-68). |
+| Encapsulamiento | 5 | El inspector de elementos (F12) confirma que `<wc-form-inventario>` crea su propio `#shadow-root (open)`, aislando sus estilos del resto de la página. |
+| Reutilización | 5 | La línea 1 del archivo demuestra que la única dependencia es `lit`, sin importar archivos locales de su proyecto original. |
+
+Issue abierto en el repositorio del Equipo 2: https://github.com/DaniAleG/app-lit/issues/5
