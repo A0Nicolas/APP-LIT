@@ -50,7 +50,7 @@ class Clientes extends LitElement {
 
   render() {
     return html`
-      <h1>Gestión de clientes - Grupo 3</h1>
+      <h1>Gestión de clientes - Grupo 1</h1>
       <div class="contenedor">
         <wc-cliente-form
           @cliente-registrado=${this.agregarCliente}
