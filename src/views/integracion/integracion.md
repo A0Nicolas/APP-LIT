@@ -31,7 +31,7 @@ flowchart TB
 
 Los datos bajan por propiedades y los eventos suben. El formulario del Equipo 2 no conoce la tabla; solo avisa con un evento y `<wc-integracion>` decide qué hacer con el dato.
 
-## 4. Adaptador
+### Adaptador
 
 El formulario del Equipo 2 emite un producto con `{codigo, nombre, categoria, cantidad, precio}`; nuestra tabla espera un cliente con `{name, lastName, email, age}`. Como no se puede modificar el componente externo ni conviene cambiar la tabla, el adaptador vive en `<wc-integracion>`, en el método `agregar`.
 
@@ -64,15 +64,7 @@ Decisiones del adaptador:
 - **Código del Equipo 2 intacto.** `src/externos/equipo-2/form-inventario.js` se copió sin cambios; el adaptador no depende de su interior, solo del evento público `producto-registrado`.
 - **Limitación.** Se reutilizan las columnas de clientes, por lo que los encabezados de la tabla (Nombre, Apellido, Correo, Edad) no corresponden al significado real de los datos de inventario.
 
-## 5. Uso de IA
-
-| Herramienta | Quién la usó | Para qué | Qué cambiamos nosotros |
-|---|---|---|---|
-| Claude (Anthropic) | Estéfano Ramírez | Guía del flujo de Git (ramas, commits, pull requests), borradores de esta documentación y dudas o problemas durante el taller | Estéfano revisó y corrigió los textos y probó el código en su equipo |
-| Gemini y Claude | Nicolas García y Solange Villegas | Flujo de los componentes, estilos de los componentes y dudas o problemas durante el taller | Revisaron y adaptaron el código al proyecto; el adaptador de `integracion.js` quedó con valores por defecto, conversión de tipos y una lista nueva en cada registro |
-| Gemini | Leonel Aguirre | Consultar por qué fallaban los comandos de prueba escritos en la consola (F12) y cómo corregirlos | Corrigió los comandos agregando la lectura de `shadowRoot` para enviar los datos al componente y obtener la captura de evidencia |
-
-## 6. Dificultades
+## 4. Dificultades
 
 **Dificultad 1 (Leonel Aguirre): error al probar la robustez desde la consola**
 
@@ -92,7 +84,7 @@ Decisiones del adaptador:
 - **Causa:** la dirección tenía un punto al final (`integracion.html.`), y el servidor de Vite devolvió `index.html` por defecto.
 - **Solución:** escribir la dirección sin el punto final.
 
-## 7. Evaluación del componente externo
+## 5. Evaluación del componente externo
 
 | Aspecto | Nota (0-5) | Evidencia |
 |---|---|---|
@@ -104,12 +96,20 @@ Decisiones del adaptador:
 
 Issue abierto en el repositorio del Equipo 2: https://github.com/DaniAleG/app-lit/issues/5
 
-## 8. Aportes del equipo
+## 6. Uso de IA
+
+| Herramienta | Quién la usó | Para qué | Qué cambiamos nosotros |
+|---|---|---|---|
+| Claude (Anthropic) | Estéfano Ramírez | Guía del flujo de Git (ramas, commits, pull requests), borradores de esta documentación y dudas o problemas durante el taller | Estéfano revisó y corrigió los textos y probó el código en su equipo |
+| Gemini y Claude | Nicolas García y Solange Villegas | Flujo de los componentes, estilos de los componentes y dudas o problemas durante el taller | Revisaron y adaptaron el código al proyecto; el adaptador de `integracion.js` quedó con valores por defecto, conversión de tipos y una lista nueva en cada registro |
+| Gemini | Leonel Aguirre | Consultar por qué fallaban los comandos de prueba escritos en la consola (F12) y cómo corregirlos | Corrigió los comandos agregando la lectura de `shadowRoot` para enviar los datos al componente y obtener la captura de evidencia |
+
+## 7. Aportes del equipo
 
 | Integrante | Rol | Aporte en `taller-integracion` | Commits |
 |---|---|---|---|
 | Nicolas García | 1 · Integración | Copia de `form-inventario.js` del Grupo 2 (commit `1c8417f`) sin cambios y el padre `<wc-integracion>` con el adaptador | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=A0Nicolas) |
-| Solange Villegas | 2 · Adaptador y pruebas | Pruebas de la integración y primera captura (`docs: pruebas del taller`, `docs: captura de la integracion`); antes del taller, la tabla de clientes, la limpieza del código y el diseño de la vista de clientes | Cuenta `Solancha` en la rama `taller-integracion`; PR #2, #4 y #5 en `dev` |
+| Solange Villegas | 2 · Adaptador y pruebas | Pruebas de la integración y primera captura (`docs: pruebas del taller`, `docs: captura de la integracion`); antes del taller, la tabla de clientes, la limpieza del código y el diseño de la vista de clientes | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=Solancha) · PR #2, #4 y #5 en `dev` |
 | Leonel Aguirre | 3 · Revisión externa | Tabla de evaluación del componente (`evaluacion.md`) y el issue en el repositorio del Grupo 2 | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=poucitotriste) · [issue #5](https://github.com/DaniAleG/app-lit/issues/5) |
 | Estéfano Ramírez | 4 · Documentación | `integracion.md` por secciones, `README.md`, página `integracion.html`, corrección del título del grupo, eliminación del error 404 del favicon y captura final | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=EstefanoRamirez) |
 
