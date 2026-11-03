@@ -1,27 +1,55 @@
-<!doctype html>
-<html lang="en">
 
+<!doctype html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>app-lit</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+
+  <title>Gestión de clientes | Grupo 1</title>
+
+  <style>
+    :root {
+      font-family: system-ui, sans-serif;
+      background: #f1f5f9;
+      color: #172033;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .barra {
+      background: #13243b;
+      color: white;
+      padding: 18px max(24px, calc((100% - 1100px) / 2));
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    .pie {
+      padding: 30px 20px;
+      color: #64748b;
+      text-align: center;
+      font-size: 13px;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Componente de navegacion</h1>
-  <wc-navbar></wc-navbar>
-  <wc-route path="/home">
-    <wc-home></wc-home>
-  </wc-route>
-  <wc-route path="/page2">
-    <wc-page2></wc-page2>
-  </wc-route>
-  <wc-route path="/page3">
-    <wc-page3></wc-page3>
-  </wc-route>
-  <script type="module" src="/src/index.js"></script>
+  <header class="barra">
+    Gestión de clientes | Grupo 1
+  </header>
 
+  <wc-clientes></wc-clientes>
+
+  <footer class="pie">
+    Programación Integrativa de Componentes Web
+  </footer>
+
+  <script
+    type="module"
+    src="/src/views/clientes/clientes.js">
+  </script>
 </body>
-
 </html>
