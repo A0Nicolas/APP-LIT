@@ -63,3 +63,31 @@ Decisiones del adaptador:
 - **Valores por defecto.** `?? ""` y `?? 0` evitan que un dato ausente rompa la tabla con `undefined`.
 - **Código del Equipo 2 intacto.** `src/externos/equipo-2/form-inventario.js` se copió sin cambios; el adaptador no depende de su interior, solo del evento público `producto-registrado`.
 - **Limitación.** Se reutilizan las columnas de clientes, por lo que los encabezados de la tabla (Nombre, Apellido, Correo, Edad) no corresponden al significado real de los datos de inventario.
+
+## 5. Uso de IA
+
+| Herramienta | Quién la usó | Para qué | Qué cambiamos nosotros |
+|---|---|---|---|
+| Claude (Anthropic) | Estéfano Ramírez | Guía del flujo de Git (ramas, commits, pull requests), borradores de esta documentación y dudas o problemas durante el taller | Estéfano revisó y corrigió los textos y probó el código en su equipo |
+| Gemini y Claude | Nicolas García y Solange Villegas | Flujo de los componentes, estilos de los componentes y dudas o problemas durante el taller | Revisaron y adaptaron el código al proyecto; el adaptador de `integracion.js` quedó con valores por defecto, conversión de tipos y una lista nueva en cada registro |
+| Gemini | Leonel Aguirre | Consultar por qué fallaban los comandos de prueba escritos en la consola (F12) y cómo corregirlos | Corrigió los comandos agregando la lectura de `shadowRoot` para enviar los datos al componente y obtener la captura de evidencia |
+
+## 6. Dificultades
+
+**Dificultad 1 (Leonel Aguirre): error al probar la robustez desde la consola**
+
+- **Síntoma:** al probar la robustez en la consola (F12) aparecía `Cannot set properties of null`.
+- **Causa:** `<wc-form-inventario>` está dentro del Shadow DOM de `<wc-integracion>`, por lo que un `document.querySelector` normal no lo encuentra.
+- **Solución:** usar `padre.shadowRoot.querySelector("wc-form-inventario")` en la consola para atravesar el Shadow DOM y pasarle los datos de prueba.
+
+**Dificultad 2 (Leonel Aguirre): `package-lock.json` a punto de subirse por accidente**
+
+- **Síntoma:** `package-lock.json` aparecía entre los cambios listos para commit.
+- **Causa:** al ejecutar `npm install` en el IDE, se actualizó automáticamente el árbol de dependencias.
+- **Solución:** desmarcar ese archivo en la pestaña *Changes* de GitHub Desktop antes de hacer el commit, para subir solo `evaluacion.md`.
+
+**Dificultad 3 (Estéfano Ramírez): la página de integración mostraba la app de clientes**
+
+- **Síntoma:** en `localhost:5173/integracion.html` se veía «Gestión de clientes» y no el formulario de inventario.
+- **Causa:** la dirección tenía un punto al final (`integracion.html.`), y el servidor de Vite devolvió `index.html` por defecto.
+- **Solución:** escribir la dirección sin el punto final.
