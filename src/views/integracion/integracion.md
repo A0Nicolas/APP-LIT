@@ -103,3 +103,14 @@ Decisiones del adaptador:
 | Reutilización | 5 | La línea 1 del archivo demuestra que la única dependencia es `lit`, sin importar archivos locales de su proyecto original. |
 
 Issue abierto en el repositorio del Equipo 2: https://github.com/DaniAleG/app-lit/issues/5
+
+## 8. Aportes del equipo
+
+| Integrante | Rol | Aporte en `taller-integracion` | Commits |
+|---|---|---|---|
+| Nicolas García | 1 · Integración | Copia de `form-inventario.js` del Grupo 2 (commit `1c8417f`) sin cambios y el padre `<wc-integracion>` con el adaptador | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=A0Nicolas) |
+| Solange Villegas | 2 · Adaptador y pruebas | Pruebas de la integración y primera captura (`docs: pruebas del taller`, `docs: captura de la integracion`); antes del taller, la tabla de clientes, la limpieza del código y el diseño de la vista de clientes | Cuenta `Solancha` en la rama `taller-integracion`; PR #2, #4 y #5 en `dev` |
+| Leonel Aguirre | 3 · Revisión externa | Tabla de evaluación del componente (`evaluacion.md`) y el issue en el repositorio del Grupo 2 | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=poucitotriste) · [issue #5](https://github.com/DaniAleG/app-lit/issues/5) |
+| Estéfano Ramírez | 4 · Documentación | `integracion.md` por secciones, `README.md`, página `integracion.html`, corrección del título del grupo, eliminación del error 404 del favicon y captura final | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=EstefanoRamirez) |
+
+La captura final (`Taller_Equipo_1.png`) reemplazó a la primera, que mostraba el error 404 del favicon en la consola y la tabla cortada.
