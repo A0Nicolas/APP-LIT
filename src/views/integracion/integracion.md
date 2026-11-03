@@ -66,27 +66,15 @@ Decisiones del adaptador:
 
 ## 4. Dificultades
 
-**Dificultad 1 (Leonel Aguirre): error al probar la robustez desde la consola**
-
-- **Síntoma:** al probar la robustez en la consola (F12) aparecía `Cannot set properties of null`.
-- **Causa:** `<wc-form-inventario>` está dentro del Shadow DOM de `<wc-integracion>`, por lo que un `document.querySelector` normal no lo encuentra.
-- **Solución:** usar `padre.shadowRoot.querySelector("wc-form-inventario")` en la consola para atravesar el Shadow DOM y pasarle los datos de prueba.
-
-**Dificultad 2 (Leonel Aguirre): `package-lock.json` a punto de subirse por accidente**
-
-- **Síntoma:** `package-lock.json` aparecía entre los cambios listos para commit.
-- **Causa:** al ejecutar `npm install` en el IDE, se actualizó automáticamente el árbol de dependencias.
-- **Solución:** desmarcar ese archivo en la pestaña *Changes* de GitHub Desktop antes de hacer el commit, para subir solo `evaluacion.md`.
-
-**Dificultad 3 (Estéfano Ramírez): la página de integración mostraba la app de clientes**
-
-- **Síntoma:** en `localhost:5173/integracion.html` se veía «Gestión de clientes» y no el formulario de inventario.
-- **Causa:** la dirección tenía un punto al final (`integracion.html.`), y el servidor de Vite devolvió `index.html` por defecto.
-- **Solución:** escribir la dirección sin el punto final.
+| # | Integrante | Síntoma | Causa | Solución |
+|---|---|---|---|---|
+| 1 | Aguirre Leonel | Al probar la robustez en la consola (F12) aparecía `Cannot set properties of null`. | `<wc-form-inventario>` está dentro del Shadow DOM de `<wc-integracion>`, por lo que un `document.querySelector` normal no lo encuentra. | Usar `padre.shadowRoot.querySelector("wc-form-inventario")` en la consola para atravesar el Shadow DOM y pasarle los datos de prueba. |
+| 2 | Aguirre Leonel | `package-lock.json` aparecía entre los cambios listos para commit. | Al ejecutar `npm install` en el IDE, se actualizó automáticamente el árbol de dependencias. | Desmarcar ese archivo en la pestaña *Changes* de GitHub Desktop antes del commit, para subir solo `evaluacion.md`. |
+| 3 | Ramírez Cevallos Carlos Estéfano | En `localhost:5173/integracion.html` se veía «Gestión de clientes» y no el formulario de inventario. | La dirección tenía un punto al final (`integracion.html.`) y Vite devolvió `index.html` por defecto. | Escribir la dirección sin el punto final. |
 
 ## 5. Evaluación del componente externo
 
-| Aspecto | Nota (0-5) | Evidencia |
+| Aspecto | Nota (0–5) | Evidencia |
 |---|---|---|
 | API clara | 4 | `static get properties` declara 6 propiedades claras, pero falta documentación JSDoc y separar el estado interno como `error` (líneas 4-13). |
 | Evento bien construido | 5 | El comando `findstr` confirma el uso de `new CustomEvent` enviando los datos en el `detail` con `bubbles: true` y `composed: true` (líneas 86-89). |
@@ -106,11 +94,15 @@ Issue abierto en el repositorio del Equipo 2: https://github.com/DaniAleG/app-li
 
 ## 7. Aportes del equipo
 
-| Integrante | Rol | Aporte en `taller-integracion` | Commits |
-|---|---|---|---|
-| Nicolas García | 1 · Integración | Copia de `form-inventario.js` del Grupo 2 (commit `1c8417f`) sin cambios y el padre `<wc-integracion>` con el adaptador | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=A0Nicolas) |
-| Solange Villegas | 2 · Adaptador y pruebas | Pruebas de la integración y primera captura (`docs: pruebas del taller`, `docs: captura de la integracion`); antes del taller, la tabla de clientes, la limpieza del código y el diseño de la vista de clientes | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=Solancha) · PR #2, #4 y #5 en `dev` |
-| Leonel Aguirre | 3 · Revisión externa | Tabla de evaluación del componente (`evaluacion.md`) y el issue en el repositorio del Grupo 2 | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=poucitotriste) · [issue #5](https://github.com/DaniAleG/app-lit/issues/5) |
-| Estéfano Ramírez | 4 · Documentación | `integracion.md` por secciones, `README.md`, página `integracion.html`, corrección del título del grupo, eliminación del error 404 del favicon y captura final | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=EstefanoRamirez) |
+Cada integrante hace commits con su propia cuenta de GitHub. Quien no tenga commits propios en el pull request se califica aparte.
+
+| Integrante | Usuario de GitHub | Rol | Qué hizo | Enlace a sus commits |
+|---|---|---|---|---|
+| García Talledo Adrián Nicolás | @A0Nicolas | 1 · Integración | Copia de `form-inventario.js` del Grupo 2 (commit `1c8417f`) sin cambios y el padre `<wc-integracion>` con el adaptador | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=A0Nicolas) |
+| Villegas Solange | @Solancha (commits del taller) y @SolangeVillegas (PR #2, #4 y #5) | 2 · Adaptador y pruebas | Pruebas de la integración y primera captura (`docs: pruebas del taller`, `docs: captura de la integracion`); antes del taller, la tabla de clientes, la limpieza del código y el diseño de la vista de clientes (PR #2, #4 y #5 en `dev`) | [commits de @Solancha](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=Solancha) · [commits de @SolangeVillegas](https://github.com/A0Nicolas/APP-LIT-1/commits/dev/?author=SolangeVillegas) |
+| Aguirre Leonel | @poucitotriste | 3 · Revisión externa | Tabla de evaluación del componente (`evaluacion.md`) y el issue en el repositorio del Grupo 2 | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=poucitotriste) · [issue #5](https://github.com/DaniAleG/app-lit/issues/5) |
+| Ramírez Cevallos Carlos Estéfano | @EstefanoRamirez | 4 · Documentación | `integracion.md` por secciones, `README.md`, página `integracion.html`, corrección del título del grupo, eliminación del error 404 del favicon y captura final | [ver commits](https://github.com/A0Nicolas/APP-LIT-1/commits/taller-integracion/?author=EstefanoRamirez) |
+
+Pull request: https://github.com/A0Nicolas/APP-LIT-1/pull/7 · Revisado por: Ramírez Cevallos Carlos Estéfano
 
 La captura final (`Taller_Equipo_1.png`) reemplazó a la primera, que mostraba el error 404 del favicon en la consola y la tabla cortada.
