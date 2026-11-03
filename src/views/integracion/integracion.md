@@ -30,3 +30,36 @@ flowchart TB
 ```
 
 Los datos bajan por propiedades y los eventos suben. El formulario del Equipo 2 no conoce la tabla; solo avisa con un evento y `<wc-integracion>` decide qué hacer con el dato.
+
+## 4. Adaptador
+
+El formulario del Equipo 2 emite un producto con `{codigo, nombre, categoria, cantidad, precio}`; nuestra tabla espera un cliente con `{name, lastName, email, age}`. Como no se puede modificar el componente externo ni conviene cambiar la tabla, el adaptador vive en `<wc-integracion>`, en el método `agregar`.
+
+```js
+agregar(evento) {
+  const producto = evento.detail ?? {};
+
+  const fila = {
+    name: String(producto.nombre ?? ""),
+    lastName: String(producto.categoria ?? ""),
+    email: `Código: ${producto.codigo ?? ""} | Precio: ${producto.precio ?? 0}`,
+    age: Number(producto.cantidad ?? 0),
+  };
+
+  this.lista = [...this.lista, fila];
+}
+```
+
+| Campo del producto (Equipo 2) | Columna de la tabla (nuestro equipo) | Transformación |
+|---|---|---|
+| `nombre` | Nombre (`name`) | `String` |
+| `categoria` | Apellido (`lastName`) | `String` |
+| `codigo` y `precio` | Correo (`email`) | Texto `Código: … \| Precio: …` |
+| `cantidad` | Edad (`age`) | `Number` |
+
+Decisiones del adaptador:
+
+- **Nueva lista en cada registro.** Se usa `[...this.lista, fila]` y no `push`, porque Lit solo vuelve a renderizar cuando cambia la referencia de la propiedad.
+- **Valores por defecto.** `?? ""` y `?? 0` evitan que un dato ausente rompa la tabla con `undefined`.
+- **Código del Equipo 2 intacto.** `src/externos/equipo-2/form-inventario.js` se copió sin cambios; el adaptador no depende de su interior, solo del evento público `producto-registrado`.
+- **Limitación.** Se reutilizan las columnas de clientes, por lo que los encabezados de la tabla (Nombre, Apellido, Correo, Edad) no corresponden al significado real de los datos de inventario.
